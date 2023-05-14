@@ -1,0 +1,9 @@
+from flask import Flask
+
+from config import Config
+from fdatabase import FDataBase
+
+app = Flask(__name__)
+app.config.from_object(Config)
+app.config.update(dict(DATABASE=os.path.join(app.root_path, 'fdb.db')))
+app.permanent_session_lifetime = datetime.timedelta(seconds=60)
